@@ -10,67 +10,44 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-  <script>
-    window.onload = () => {
-      var clipboard = new ClipboardJS('.btn');
 
-      clipboard.on('success', function (e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-      });
-
-      clipboard.on('error', function (e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-      });
-    }
-
-    function generateText() {
-      let textCopied;
-      setTimeout(() => {
-        textCopied = ClipboardJS.copy(document.querySelector('#generatedText'));
-      }, 500)
-    }
-
-
-    const form = document.querySelector('.form')
-    const coffeePlaceInput = form.querySelector('input[name="coffePlace"]:checked')
-    const earnMoneyInput = document.getElementById('earnMoney')
-    const countOrdersInput = document.getElementById('countOrders')
-    const averageBillInput = document.getElementById('averageBill')
-    const newGuestsInput = document.getElementById('newGuests')
-    const oldGuestsInput = document.getElementById('oldGuests')
-
-    const countLikesInput = document.getElementById('countLikes')
-    const countDislikesInput = document.getElementById('countDislikes')
-    const averageSpeedInput = document.getElementById('averageSpeed')
-    const longOrdersInput = document.getElementById('longOrders')
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-    })
-  </script>
+  <script src="main.js"></script>
 </head>
 <body>
   <div class="pt-4 pb-3" style="background: #192DA8; color: #FFF">
     <h1 class="container">Генератор отчёта</h1>
   </div>
   <div class="container mt-4">
-  <form class="form">
+  <form class="form" name="form">
     <h3>Выбор точки</h3>
     <div>
-      <input type="radio" class="btn-check" name="coffeePlace" id="wPlaza" autocomplete="off" required>
+      <input type="radio" class="btn-check" name="coffeePlace" id="wPlaza" value="0" autocomplete="off" required>
       <label class="btn" for="wPlaza">W-Plaza</label>
 
-      <input type="radio" class="btn-check" name="coffeePlace" id="Lefort" autocomplete="off" required>
+      <input type="radio" class="btn-check" name="coffeePlace" id="Lefort" value="1" autocomplete="off" required>
       <label class="btn" for="Lefort">Лефорт</label>
 
-      <input type="radio" class="btn-check" name="coffeePlace" id="Barklay" autocomplete="off" required>
+      <input type="radio" class="btn-check" name="coffeePlace" id="Barklay" value="2" autocomplete="off" required>
       <label class="btn" for="Barklay">Барклай</label>
     </div>
     <hr/>
+    <h2>Motivation</h2>
+    <div class="mb-3">
+      <label for="countLikes" class="form-label">Лайки</label>
+      <input type="number" class="form-control" id="countLikes" required>
+    </div>
+    <div class="mb-3">
+      <label for="countDislikes" class="form-label">Дизлайки</label>
+      <input type="number" class="form-control" id="countDislikes" required>
+    </div>
+    <div class="mb-3">
+      <label for="averageSpeed" class="form-label">Средняя скорость</label>
+      <input type="time" class="form-control" id="averageSpeed" required>
+    </div>
+    <div class="mb-3">
+      <label for="longOrders" class="form-label">Долгие заказы</label>
+      <input type="number" class="form-control" id="longOrders" required>
+    </div>
     <h2>Dodo IS</h2>
     <div class="mb-3">
       <label for="earnMoney" class="form-label">Выручка</label>
@@ -91,23 +68,6 @@
     <div class="mb-3">
       <label for="oldGuests" class="form-label">Количество старых гостей</label>
       <input type="number" class="form-control" id="oldGuests" required>
-    </div>
-    <h2>Motivation</h2>
-    <div class="mb-3">
-      <label for="countLikes" class="form-label">Лайки</label>
-      <input type="number" class="form-control" id="countLikes" required>
-    </div>
-    <div class="mb-3">
-      <label for="countDislikes" class="form-label">Дизлайки</label>
-      <input type="number" class="form-control" id="countDislikes" required>
-    </div>
-    <div class="mb-3">
-      <label for="averageSpeed" class="form-label">Средняя скорость</label>
-      <input type="time" class="form-control" id="averageSpeed" required>
-    </div>
-    <div class="mb-3">
-      <label for="longOrders" class="form-label">Долгие заказы</label>
-      <input type="number" class="form-control" id="longOrders" required>
     </div>
     <button onclick="generateText()" type="submit" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#resultModal">
       Сгенерировать
