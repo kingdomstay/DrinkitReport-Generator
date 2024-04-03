@@ -16,7 +16,7 @@ window.onload = () => {
     });*/
 
     const apiUrl = "https://drinkit-mobile-api.drinkit.dodois.io/motivation/v2/GetMotivationBoard?countryId=643&unitId="
-    const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-9bcb-11ee-891a4aac5635"]
+    const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-9bcb-11ee-891a4aac5635", "4a97380a-12ca-9443-11ee-dc6e7460035a"]
 
     const formValues = document.forms.form
 
