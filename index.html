@@ -28,13 +28,29 @@
     }
 
     function generateText() {
-
-
       let textCopied;
       setTimeout(() => {
         textCopied = ClipboardJS.copy(document.querySelector('#generatedText'));
       }, 500)
     }
+
+
+    const form = document.querySelector('.form')
+    const coffeePlaceInput = form.querySelector('input[name="coffePlace"]:checked')
+    const earnMoneyInput = document.getElementById('earnMoney')
+    const countOrdersInput = document.getElementById('countOrders')
+    const averageBillInput = document.getElementById('averageBill')
+    const newGuestsInput = document.getElementById('newGuests')
+    const oldGuestsInput = document.getElementById('oldGuests')
+
+    const countLikesInput = document.getElementById('countLikes')
+    const countDislikesInput = document.getElementById('countDislikes')
+    const averageSpeedInput = document.getElementById('averageSpeed')
+    const longOrdersInput = document.getElementById('longOrders')
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+    })
   </script>
 </head>
 <body>
@@ -42,54 +58,58 @@
     <h1 class="container">Генератор отчёта</h1>
   </div>
   <div class="container mt-4">
-  <form>
+  <form class="form">
     <h3>Выбор точки</h3>
     <div>
-      <input type="radio" class="btn-check" name="coffeePlace" id="wPlaza" autocomplete="off">
+      <input type="radio" class="btn-check" name="coffeePlace" id="wPlaza" autocomplete="off" required>
       <label class="btn" for="wPlaza">W-Plaza</label>
 
-      <input type="radio" class="btn-check" name="coffeePlace" id="Lefort" autocomplete="off" checked>
+      <input type="radio" class="btn-check" name="coffeePlace" id="Lefort" autocomplete="off" required>
       <label class="btn" for="Lefort">Лефорт</label>
 
-      <input type="radio" class="btn-check" name="coffeePlace" id="Barklay" autocomplete="off">
+      <input type="radio" class="btn-check" name="coffeePlace" id="Barklay" autocomplete="off" required>
       <label class="btn" for="Barklay">Барклай</label>
     </div>
     <hr/>
     <h2>Dodo IS</h2>
     <div class="mb-3">
       <label for="earnMoney" class="form-label">Выручка</label>
-      <input type="number" class="form-control" id="earnMoney">
+      <input type="number" class="form-control" id="earnMoney" required>
     </div>
     <div class="mb-3">
       <label for="countOrders" class="form-label">Количество заказов</label>
-      <input type="number" class="form-control" id="countOrders">
+      <input type="number" class="form-control" id="countOrders" required>
     </div>
     <div class="mb-3">
       <label for="averageBill" class="form-label">Средний чек</label>
-      <input type="number" class="form-control" id="averageBill">
+      <input type="number" class="form-control" id="averageBill" required>
     </div>
     <div class="mb-3">
       <label for="newGuests" class="form-label">Количество новых гостей</label>
-      <input type="number" class="form-control" id="newGuests">
+      <input type="number" class="form-control" id="newGuests" required>
     </div>
     <div class="mb-3">
       <label for="oldGuests" class="form-label">Количество старых гостей</label>
-      <input type="number" class="form-control" id="oldGuests">
+      <input type="number" class="form-control" id="oldGuests" required>
     </div>
     <h2>Motivation</h2>
     <div class="mb-3">
       <label for="countLikes" class="form-label">Лайки</label>
-      <input type="number" class="form-control" id="countLikes">
+      <input type="number" class="form-control" id="countLikes" required>
     </div>
     <div class="mb-3">
       <label for="countDislikes" class="form-label">Дизлайки</label>
-      <input type="number" class="form-control" id="countDislikes">
+      <input type="number" class="form-control" id="countDislikes" required>
+    </div>
+    <div class="mb-3">
+      <label for="averageSpeed" class="form-label">Средняя скорость</label>
+      <input type="time" class="form-control" id="averageSpeed" required>
     </div>
     <div class="mb-3">
       <label for="longOrders" class="form-label">Долгие заказы</label>
-      <input type="number" class="form-control" id="longOrders">
+      <input type="number" class="form-control" id="longOrders" required>
     </div>
-    <button onclick="generateText()" type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#resultModal">
+    <button onclick="generateText()" type="submit" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#resultModal">
       Сгенерировать
     </button>
   </form>
