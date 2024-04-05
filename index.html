@@ -46,7 +46,7 @@
     </div>
     <div class="mb-3">
       <label for="averageSpeed" class="form-label">Средняя скорость</label>
-      <input type="time" class="form-control" id="averageSpeed" required disabled>
+      <input type="time" style="text-align: left" class="form-control" id="averageSpeed" required disabled>
     </div>
     <div class="mb-3">
       <label for="longOrders" class="form-label">Долгие заказы</label>
@@ -73,15 +73,17 @@
       <label for="oldGuests" class="form-label">Количество старых гостей</label>
       <input type="number" class="form-control" id="oldGuests" required>
     </div>
-    <button onclick="generateText()" type="submit" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#resultModal">
-      Сгенерировать
-    </button>
+    <div class="d-grid gap-2">
+      <button onclick="generateText()" type="submit" class="btn btn-primary btn-lg mb-5" data-bs-toggle="modal" data-bs-target="#resultModal">
+        Сгенерировать
+      </button>
+    </div>
   </form>
   </div>
 
   <!-- Modal -->
   <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Уже скопировано!</h1>
