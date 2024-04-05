@@ -28,6 +28,8 @@ window.onload = () => {
     const newGuestsInput = document.getElementById('newGuests')
     const oldGuestsInput = document.getElementById('oldGuests')
 
+    const motivationTextHelperEl = document.getElementById('motivationTextHelper')
+
     const countLikesInput = document.getElementById('countLikes')
     const countDislikesInput = document.getElementById('countDislikes')
     const averageSpeedInput = document.getElementById('averageSpeed')
@@ -52,13 +54,21 @@ window.onload = () => {
     function selectPlace() {
         formValues.coffeePlace.forEach(radio => {
             radio.addEventListener('change', () => {
+                motivationTextHelperEl.textContent = 'секунду..'
                 fetch(`${apiUrl}${motivationsUUID[parseInt(formValues.coffeePlace.value)]}`).then(function (response) {
                     response.json().then(function (data) {
                         console.log(data)
+
+                        const lastUpdateTime = moment().locale('ru').calendar()
+                        motivationTextHelperEl.textContent = `обновлено ${lastUpdateTime}`
+
                         countLikesInput.value = data.orderRatingCounter.likeCount
                         countDislikesInput.value = data.orderRatingCounter.dislikeCount
-                        averageSpeedInput.value = toHHMMSS(data.yesterdayCounter.readySecondsAvg)
-                        longOrdersInput.value = data.todayCounter
+                        averageSpeedInput.value = toHHMMSS(data.todayCounter.readySecondsAvg)
+                        if (!data.todayCounter.ratedOrderCounts.slow) {
+                            data.todayCounter.ratedOrderCounts.slow = 0;
+                        }
+                        longOrdersInput.value = data.todayCounter.ratedOrderCounts.slow
                     });
                 });
             })
@@ -75,3 +85,4 @@ window.onload = () => {
 
     selectPlace()
 }
+
