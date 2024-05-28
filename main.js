@@ -64,7 +64,7 @@ function selectPlace() {
 }
 
 function formHandler() {
-    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value && percentEarnMoneyLastInput.value);
+    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value);
     sendFormButtonInput.disabled = !isValid
 }
 
@@ -86,7 +86,12 @@ function generateText() {
 
     generatedText += moment().format('DD.MM.YY:');
 
-    generatedText += `\nВыручка - ${earnMoneyInput.value} (${percentEarnMoneyLastInput.value}%)\nЗаказы - ${countOrdersInput.value}\nСредний чек - ${averageBillInput.value}\nСредняя скорость - ${averageSpeedInput.value}\nДолгих - ${longOrdersInput.value}\nЛайки - ${countLikesInput.value}\nДизлайки - ${countDislikesInput.value}\nНовых гостей - ${newGuestsInput.value}\nСтарых гостей - ${oldGuestsInput.value}`
+    let generatedPercent = "";
+    if (percentEarnMoneyLastInput.value) {
+        generatedPercent = ` (${percentEarnMoneyLastInput.value}%)`;
+    }
+
+    generatedText += `\nВыручка - ${earnMoneyInput.value}${generatedPercent}\nЗаказы - ${countOrdersInput.value}\nСредний чек - ${averageBillInput.value}\nСредняя скорость - ${averageSpeedInput.value}\nДолгих - ${longOrdersInput.value}\nЛайки - ${countLikesInput.value}\nДизлайки - ${countDislikesInput.value}\nНовых гостей - ${newGuestsInput.value}\nСтарых гостей - ${oldGuestsInput.value}`
 
     generatedTextInput.textContent = generatedText
 }
