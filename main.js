@@ -4,6 +4,7 @@ const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-
 const formValues = document.forms.form
 const form = document.querySelector('.form')
 const earnMoneyInput = document.getElementById('earnMoney')
+const percentEarnMoneyLastInput = document.getElementById('percentEarnMoneyLast')
 const countOrdersInput = document.getElementById('countOrders')
 const averageBillInput = document.getElementById('averageBill')
 const newGuestsInput = document.getElementById('newGuests')
@@ -63,7 +64,7 @@ function selectPlace() {
 }
 
 function formHandler() {
-    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value);
+    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value && percentEarnMoneyLastInput.value);
     sendFormButtonInput.disabled = !isValid
 }
 
@@ -85,7 +86,7 @@ function generateText() {
 
     generatedText += moment().format('DD.MM.YY:');
 
-    generatedText += `\nВыручка - ${earnMoneyInput.value}\nЗаказы - ${countOrdersInput.value}\nСредний чек - ${averageBillInput.value}\nСредняя скорость - ${averageSpeedInput.value}\nДолгих - ${longOrdersInput.value}\nЛайки - ${countLikesInput.value}\nДизлайки - ${countDislikesInput.value}\nНовых гостей - ${newGuestsInput.value}\nСтарых гостей - ${oldGuestsInput.value}`
+    generatedText += `\nВыручка - ${earnMoneyInput.value} (${percentEarnMoneyLastInput.value}%)\nЗаказы - ${countOrdersInput.value}\nСредний чек - ${averageBillInput.value}\nСредняя скорость - ${averageSpeedInput.value}\nДолгих - ${longOrdersInput.value}\nЛайки - ${countLikesInput.value}\nДизлайки - ${countDislikesInput.value}\nНовых гостей - ${newGuestsInput.value}\nСтарых гостей - ${oldGuestsInput.value}`
 
     generatedTextInput.textContent = generatedText
 }
