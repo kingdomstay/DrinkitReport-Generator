@@ -55,10 +55,13 @@
     <h2>Dodo IS</h2>
     <div class="mb-3">
       <label for="earnMoney" class="form-label">Выручка</label>
+      <input type="number" class="form-control" id="earnMoney" required>
+    </div>
+    <div class="mb-3">
+      <label for="percentEarnMoneyLast" class="form-label">Прирост выручки (необязательно)</label>
       <div class="input-group">
-        <input type="number" class="form-control" id="earnMoney" required>
-        <label for="percentEarnMoneyLast" class="input-group-text">Прирост выручки, %</label>
         <input id="percentEarnMoneyLast" type="number" min="-100" max="100" class="form-control">
+        <span class="input-group-text">%</span>
       </div>
     </div>
     <div class="mb-3">
