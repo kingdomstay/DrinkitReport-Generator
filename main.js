@@ -1,6 +1,9 @@
 const apiUrl = "https://drinkit-mobile-api.drinkit.dodois.io/motivation/v2/GetMotivationBoard?countryId=643&unitId="
 const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-9bcb-11ee-891a4aac5635", "4a97380a-12ca-9443-11ee-dc6e7460035a"]
 
+const openApiUrl = "https://publicapi.drinkit.dodois.io/ru/api/v1/OperationalStatisticsByUnit/"
+const openUIDs = ["1150", "139613", "139617"]
+
 const formValues = document.forms.form
 const form = document.querySelector('.form')
 const earnMoneyInput = document.getElementById('earnMoney')
@@ -59,6 +62,14 @@ function selectPlace() {
                     formHandler()
                 });
             });
+            fetch(`${openApiUrl}${openUIDs[parseInt(formValues.coffeePlace.value)]}`).then(function (response) {
+                response.json().then(function (data) {
+                    console.log(data)
+
+                    earnMoneyInput.value = data.Revenue
+                    countOrdersInput.value = data.OrderCount
+                })
+            })
         })
     });
 }
