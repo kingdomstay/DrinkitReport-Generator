@@ -24,6 +24,9 @@ const sendFormButtonInput = document.getElementById('sendFormButton')
 
 const generatedTextInput = document.getElementById('generatedText')
 
+let percentEarnMoney = true
+const percentEarnMoneyLastButton = document.getElementById('percentEarnMoneyLastButton')
+
 const modal = new bootstrap.Modal('#resultModal')
 
 let isValid;
@@ -68,6 +71,7 @@ function selectPlace() {
 
                     earnMoneyInput.value = data.Revenue
                     countOrdersInput.value = data.OrderCount
+                    averageBillInput.value = (data.Revenue / data.OrderCount).toFixed(2)
                 })
             })
         })
@@ -75,7 +79,7 @@ function selectPlace() {
 }
 
 function formHandler() {
-    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value);
+    isValid = (countLikesInput.value && countDislikesInput.value && averageSpeedInput.value && longOrdersInput.value && earnMoneyInput.value && countOrdersInput.value && averageBillInput.value && newGuestsInput.value && oldGuestsInput.value && percentEarnMoneyLastInput.value);
     sendFormButtonInput.disabled = !isValid
 }
 
@@ -98,8 +102,14 @@ function generateText() {
     generatedText += moment().format('DD.MM.YY:');
 
     let generatedPercent = "";
-    if (percentEarnMoneyLastInput.value) {
-        generatedPercent = ` (${percentEarnMoneyLastInput.value}%)`;
+    if (percentEarnMoney) {
+        generatedPercent = ` (+${percentEarnMoneyLastInput.value}%)`;
+    } else {
+        generatedPercent = ` (-${percentEarnMoneyLastInput.value}%)`;
+    }
+
+    if (percentEarnMoneyLastInput.value === '0') {
+        generatedPercent = ` (0%)`;
     }
 
     generatedText += `\nВыручка - ${earnMoneyInput.value}${generatedPercent}\nЗаказы - ${countOrdersInput.value}\nСредний чек - ${averageBillInput.value}\nСредняя скорость - ${averageSpeedInput.value}\nДолгих - ${longOrdersInput.value}\nЛайки - ${countLikesInput.value}\nДизлайки - ${countDislikesInput.value}\nНовых гостей - ${newGuestsInput.value}\nСтарых гостей - ${oldGuestsInput.value}`
@@ -134,3 +144,17 @@ modalEl.addEventListener('shown.bs.modal', event => {
     console.log('test')
     generatedTextInput.select()
 })
+
+
+function changePercentEarnMoney() {
+    percentEarnMoney = !percentEarnMoney
+    if (percentEarnMoney) {
+        percentEarnMoneyLastButton.innerHTML = '+'
+        percentEarnMoneyLastButton.classList.add('btn-success')
+        percentEarnMoneyLastButton.classList.remove('btn-danger')
+    } else {
+        percentEarnMoneyLastButton.innerHTML = '–'
+        percentEarnMoneyLastButton.classList.toggle('btn-success')
+        percentEarnMoneyLastButton.classList.toggle('btn-danger')
+    }
+}
