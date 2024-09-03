@@ -38,40 +38,42 @@
     </div>
     <div class="mb-3">
       <label for="countLikes" class="form-label">Лайки</label>
-      <input type="number" class="form-control" id="countLikes" required readonly>
+      <input type="number" class="form-control" id="countLikes" required disabled>
     </div>
     <div class="mb-3">
       <label for="countDislikes" class="form-label">Дизлайки</label>
-      <input type="number" class="form-control" id="countDislikes" required readonly>
+      <input type="number" class="form-control" id="countDislikes" required disabled>
     </div>
     <div class="mb-3">
       <label for="averageSpeed" class="form-label">Средняя скорость</label>
-      <input type="time" style="text-align: left" class="form-control" id="averageSpeed" required readonly>
+      <input type="time" style="text-align: left" class="form-control" id="averageSpeed" required disabled>
     </div>
     <div class="mb-3">
       <label for="longOrders" class="form-label">Долгие заказы</label>
-      <input type="number" class="form-control" id="longOrders" required readonly>
+      <input type="number" class="form-control" id="longOrders" required disabled>
     </div>
     <h2>Dodo IS</h2>
     <div class="mb-3">
       <label for="earnMoney" class="form-label">Выручка</label>
-      <input type="number" class="form-control" id="earnMoney" required readonly>
+      <input type="number" class="form-control" id="earnMoney" required disabled>
     </div>
     <div class="mb-3">
-      <label for="percentEarnMoneyLast" class="form-label">Прирост выручки <br/><span class="badge text-bg-primary">Обновлено, нажимайте на кнопку для выбора отрицательной или положительной динамики роста выручки</span></label>
+      <label for="countOrders" class="form-label">Количество заказов</label>
+      <input type="number" class="form-control" id="countOrders" required disabled>
+    </div>
+    <div class="mb-3">
+      <span class="badge text-bg-primary">Обновлено</span>
+      <label for="averageBill" class="form-label">Средний чек</label>
+      <input type="number" class="form-control" id="averageBill" required disabled>
+    </div>
+    <div class="mb-3">
+      <span class="badge text-bg-primary">Обновлено</span>
+      <label for="percentEarnMoneyLast" class="form-label">Прирост выручки</label>
       <div class="input-group">
         <button class="btn btn-success fw-bold" type="button" onclick="changePercentEarnMoney()" id="percentEarnMoneyLastButton">+</button>
         <input id="percentEarnMoneyLast" type="number" min="0" max="100" class="form-control" required>
         <span class="input-group-text">%</span>
       </div>
-    </div>
-    <div class="mb-3">
-      <label for="countOrders" class="form-label">Количество заказов</label>
-      <input type="number" class="form-control" id="countOrders" required readonly>
-    </div>
-    <div class="mb-3">
-      <label for="averageBill" class="form-label">Средний чек</label>
-      <input type="number" class="form-control" id="averageBill" required readonly>
     </div>
     <div class="mb-3">
       <label for="newGuests" class="form-label">Количество новых гостей</label>
@@ -100,7 +102,7 @@
         <div class="modal-body">
           <div>
             <label for="generatedText" class="form-label d-none"></label>
-            <textarea class="form-control" readonly id="generatedText" rows="10"></textarea>
+            <textarea class="form-control" disabled id="generatedText" rows="10"></textarea>
           </div>
         </div>
         <div class="modal-footer">
