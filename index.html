@@ -38,41 +38,40 @@
     </div>
     <div class="mb-3">
       <label for="countLikes" class="form-label">Лайки</label>
-      <input type="number" class="form-control" id="countLikes" required disabled>
+      <input type="number" class="form-control" id="countLikes" required readonly>
     </div>
     <div class="mb-3">
       <label for="countDislikes" class="form-label">Дизлайки</label>
-      <input type="number" class="form-control" id="countDislikes" required disabled>
+      <input type="number" class="form-control" id="countDislikes" required readonly>
     </div>
     <div class="mb-3">
       <label for="averageSpeed" class="form-label">Средняя скорость</label>
-      <input type="time" style="text-align: left" class="form-control" id="averageSpeed" required disabled>
+      <input type="time" style="text-align: left" class="form-control" id="averageSpeed" required readonly>
     </div>
     <div class="mb-3">
       <label for="longOrders" class="form-label">Долгие заказы</label>
-      <input type="number" class="form-control" id="longOrders" required disabled>
+      <input type="number" class="form-control" id="longOrders" required readonly>
     </div>
     <h2>Dodo IS</h2>
     <div class="mb-3">
       <label for="earnMoney" class="form-label">Выручка</label>
-      <input type="number" class="form-control" id="earnMoney" required>
-      <div class="form-text text-danger">Обязательно сверьтесь с Dodo IS, данные могут поступать с задержкой</div>
+      <input type="number" class="form-control" id="earnMoney" required readonly>
     </div>
     <div class="mb-3">
-      <label for="percentEarnMoneyLast" class="form-label">Прирост выручки (необязательно)</label>
+      <label for="percentEarnMoneyLast" class="form-label">Прирост выручки <br/><span class="badge text-bg-primary">Обновлено, нажимайте на кнопку для выбора отрицательной или положительной динамики роста выручки</span></label>
       <div class="input-group">
-        <input id="percentEarnMoneyLast" type="number" min="-100" max="100" class="form-control">
+        <button class="btn btn-success fw-bold" type="button" onclick="changePercentEarnMoney()" id="percentEarnMoneyLastButton">+</button>
+        <input id="percentEarnMoneyLast" type="number" min="0" max="100" class="form-control" required>
         <span class="input-group-text">%</span>
       </div>
     </div>
     <div class="mb-3">
       <label for="countOrders" class="form-label">Количество заказов</label>
-      <input type="number" class="form-control" id="countOrders" required>
-      <div class="form-text text-danger">Обязательно сверьтесь с Dodo IS, данные могут поступать с задержкой</div>
+      <input type="number" class="form-control" id="countOrders" required readonly>
     </div>
     <div class="mb-3">
       <label for="averageBill" class="form-label">Средний чек</label>
-      <input type="number" class="form-control" id="averageBill" required>
+      <input type="number" class="form-control" id="averageBill" required readonly>
     </div>
     <div class="mb-3">
       <label for="newGuests" class="form-label">Количество новых гостей</label>
