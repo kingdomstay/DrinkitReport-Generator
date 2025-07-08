@@ -1,8 +1,8 @@
 const apiUrl = "https://drinkit-mobile-api.drinkit.dodois.io/motivation/v2/GetMotivationBoard?countryId=643&unitId="
-const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-9bcb-11ee-891a4aac5635", "4a97380a-12ca-9443-11ee-dc6e7460035a", "11efd404-a70e-93d6-2a76-1031ef1cbb50", "11efd405-967f-4b84-fedd-a3c5ace887e0"]
+const motivationsUUID = ["fe009d98-f69b-87a0-11ed-6a59445cf1ff", "5a049489-6823-9bcb-11ee-891a4aac5635", "4a97380a-12ca-9443-11ee-dc6e7460035a", "11efd404-a70e-93d6-2a76-1031ef1cbb50", "11efd405-967f-4b84-fedd-a3c5ace887e0", "11f03595-801b-3711-44a6-534a9c2ab850"]
 
 const openApiUrl = "https://publicapi.drinkit.dodois.io/ru/api/v1/OperationalStatisticsByUnit/"
-const openUIDs = ["1150", "139613", "139617", "139677", "139678"]
+const openUIDs = ["1150", "139613", "139617", "139677", "139678", "139713"]
 
 const formValues = document.forms.form
 const form = document.querySelector('.form')
@@ -102,6 +102,8 @@ function generateText() {
             break
         case 4:
             generatedText += "ТЦ Планета "
+        case 5:
+            generatedText += "Ривьера "
     }
 
     generatedText += moment().format('DD.MM.YY:');
